@@ -1,0 +1,148 @@
+/* Header Styles */
+.header {
+  position: relative;
+  background: linear-gradient(
+      to right,
+      rgba(10, 10, 15, 0.7) 0%,
+      rgba(20, 20, 35, 0.65) 50%,
+      rgba(10, 10, 15, 0.7) 100%
+    ),
+    url("/main_header.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 25px 0;
+  border-bottom: 3px solid #ff6b35;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(255, 107, 53, 0.2);
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 90% 50%,
+      rgba(255, 107, 53, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(255, 107, 53, 0.05) 0%,
+      transparent 50%
+    );
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.6));
+}
+
+.logo-icon {
+  height: 48px;
+  width: auto;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.logo:hover .logo-icon {
+  filter: drop-shadow(0 0 12px rgba(255, 107, 53, 0.5));
+}
+
+.logo-text {
+  font-size: 36px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff6b35 0%, #ffa500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+  filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.3));
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.mature-toggle {
+  padding: 8px 16px;
+  border: 2px solid #ff6b35;
+  background-color: transparent;
+  color: #ff6b35;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mature-toggle:hover {
+  background-color: rgba(255, 107, 53, 0.2);
+  box-shadow: 0 0 12px rgba(255, 107, 53, 0.3);
+}
+
+.mature-toggle.active {
+  background-color: #ff6b35;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(255, 107, 53, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 0;
+    border-bottom: 1px solid #ff6b35;
+  }
+
+  .logo-text {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+
+  .header-content {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .header-content {
+    padding: 0 15px;
+  }
+}
