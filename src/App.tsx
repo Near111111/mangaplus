@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import MangaDetail from "./pages/MangaDetail";
 import MangaReader from "./pages/MangaReader";
 import "./App.css";
 
@@ -12,7 +13,8 @@ function App() {
       <main className="page-container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/manga/:id" element={<MangaReader />} />
+          <Route path="/manga/:id" element={<MangaDetail />} />
+          <Route path="/manga/:id/read/:chapter" element={<MangaReader />} />
         </Routes>
       </main>
     </div>

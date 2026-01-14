@@ -7,7 +7,8 @@ interface Manga {
   id: string;
   title: string;
   imgUrl: string;
-  latestChapter: string;
+  latestChapter?: string; // From pagination
+  latestChapters?: Array<{ name: string; chapter: string }>; // From search
   description: string;
 }
 
@@ -103,8 +104,8 @@ export default function Home() {
         </div>
       ) : (
         <div className="manwha-grid">
-          {mangaData.map((manga) => (
-            <ManwhaCard key={manga.id} manwha={manga} />
+          {mangaData.map((manga, idx) => (
+            <ManwhaCard key={`${manga.id}-${idx}`} manwha={manga} />
           ))}
         </div>
       )}

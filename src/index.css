@@ -1,41 +1,20 @@
-:root {
-  font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
-    sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Global styles and layout fixes to remove the white border and debug outline. */
 
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0f0f0f;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+/* Ensure the app fills the viewport and the background is consistent
+   so you don't see white gaps around the UI. */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0b0b0b; /* match your app theme */
+  color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background: #0f0f0f;
-  overflow-x: hidden;
-}
-body {
-  margin: 0;
-  min-width: 320px;
-  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
-}
-
+/* Basic link/button styles preserved */
 a {
   font-weight: 500;
   color: #ff6b35;
@@ -68,6 +47,6 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-* {
-  outline: 1px solid red;
-}
+
+/* --- IMPORTANT: removed the debugging rule that outlines everything --- */
+/* DO NOT add `* { outline: 1px solid red; }` anywhere */

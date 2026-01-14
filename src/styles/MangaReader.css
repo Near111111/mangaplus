@@ -1,0 +1,109 @@
+.reader-container {
+  min-height: 100vh;
+  background: #1a1a1a;
+  padding-bottom: 2rem;
+}
+
+.reader-header {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 2px solid #ff6b35;
+  z-index: 100;
+}
+
+.back-btn {
+  padding: 0.75rem 1.5rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #444;
+}
+
+.chapter-title {
+  color: #ff6b35;
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.reader-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.reader-page {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+.reader-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-btn {
+  padding: 1.2rem 3rem;
+  background: #ff6b35;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 220px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #ff8555;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255, 107, 53, 0.4);
+}
+
+.nav-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.nav-btn:disabled {
+  background: #333;
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.reader-status {
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.reader-error {
+  color: #ff6b35;
+}

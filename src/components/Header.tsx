@@ -7,8 +7,8 @@ const Header: React.FC = () => {
       <div className="header-content">
         <div className="logo-section">
           <div className="logo">
-            <img src="/manwha_icon.png" alt="Manga" className="logo-icon" />
-            <span className="logo-text">MANGA</span>
+            <img src="/manwha_icon.png" alt="Mangaplus" className="logo-icon" />
+            <span className="logo-text">MANGAPLUS</span>
           </div>
         </div>
       </div>
