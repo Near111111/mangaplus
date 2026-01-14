@@ -7,8 +7,8 @@ interface Manga {
   id: string;
   title: string;
   imgUrl: string;
-  latestChapter?: string; // From pagination
-  latestChapters?: Array<{ name: string; chapter: string }>; // From search
+  latestChapter?: string;
+  latestChapters?: Array<{ name: string; chapter: string }>;
   description: string;
 }
 
@@ -32,15 +32,15 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
-  const HOME_API = "/api/manga-list";
-  const SEARCH_API = "/api/search";
+  // Direct API calls to gomanga
+  const BASE_URL = "https://gomanga-api.vercel.app/api";
 
   const fetchHomeManga = async (page: number) => {
     try {
       setLoading(true);
       setIsSearching(false);
 
-      const response = await fetch(`${HOME_API}/${page}`);
+      const response = await fetch(`${BASE_URL}/manga-list/${page}`);
       const result: MangaListResponse = await response.json();
 
       setMangaData(result.data);
@@ -63,7 +63,7 @@ export default function Home() {
       setIsSearching(true);
 
       const formattedQuery = query.replace(/\s+/g, "_");
-      const response = await fetch(`${SEARCH_API}/${formattedQuery}`);
+      const response = await fetch(`${BASE_URL}/search/${formattedQuery}`);
       const result: SearchResponse = await response.json();
 
       setMangaData(result.manga || []);
