@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/api/manga-list/:page",
+      "destination": "/api/manga-list/[page]"
+    },
+    {
+      "source": "/api/search/:query",
+      "destination": "/api/search/[query]"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
