@@ -78,5 +78,17 @@
 .manwha-card:hover .card-overlay {
   opacity: 1;
 }
+.card-title {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-align: center;
+
+  /* Single line truncate */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* rest of your css kept as-is */

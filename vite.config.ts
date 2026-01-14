@@ -8,7 +8,7 @@ export default defineConfig({
       "/api": {
         target: "https://gomanga-api.vercel.app",
         changeOrigin: true,
-        secure: true,
+        rewrite: (path) => path,
       },
     },
   },
