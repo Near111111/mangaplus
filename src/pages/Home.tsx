@@ -7,8 +7,7 @@ interface Manga {
   id: string;
   title: string;
   imgUrl: string;
-  latestChapter?: string;
-  latestChapters?: Array<{ name: string; chapter: string }>;
+  latestChapter: string;
   description: string;
 }
 
@@ -32,15 +31,15 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
-  // Direct API calls to gomanga
-  const BASE_URL = "https://gomanga-api.vercel.app/api";
+  const HOME_API = "/api/manga-list";
+  const SEARCH_API = "/api/search";
 
   const fetchHomeManga = async (page: number) => {
     try {
       setLoading(true);
       setIsSearching(false);
 
-      const response = await fetch(`${BASE_URL}/manga-list/${page}`);
+      const response = await fetch(`${HOME_API}/${page}`);
       const result: MangaListResponse = await response.json();
 
       setMangaData(result.data);
@@ -63,7 +62,7 @@ export default function Home() {
       setIsSearching(true);
 
       const formattedQuery = query.replace(/\s+/g, "_");
-      const response = await fetch(`${BASE_URL}/search/${formattedQuery}`);
+      const response = await fetch(`${SEARCH_API}/${formattedQuery}`);
       const result: SearchResponse = await response.json();
 
       setMangaData(result.manga || []);
@@ -104,8 +103,8 @@ export default function Home() {
         </div>
       ) : (
         <div className="manwha-grid">
-          {mangaData.map((manga, idx) => (
-            <ManwhaCard key={`${manga.id}-${idx}`} manwha={manga} />
+          {mangaData.map((manga) => (
+            <ManwhaCard key={manga.id} manwha={manga} />
           ))}
         </div>
       )}
