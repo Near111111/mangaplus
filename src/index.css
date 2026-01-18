@@ -1,20 +1,48 @@
-/* Global styles and layout fixes to remove the white border and debug outline. */
+/* Global styles and layout fixes */
 
-/* Ensure the app fills the viewport and the background is consistent
-   so you don't see white gaps around the UI. */
 html,
 body,
 #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #0b0b0b; /* match your app theme */
-  color: #fff;
+  background-color: #0b0b0b;
+  color: #ffffff;
+
+  /* ✅ BODY FONT */
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Basic link/button styles preserved */
+/* ---------- TYPOGRAPHY ---------- */
+
+/* Logo / Brand / Big Headers */
+.logo-text,
+.site-title,
+.section-title {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Manga titles */
+.manga-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Descriptions / meta text */
+.manga-meta,
+.description {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* ---------- LINKS ---------- */
 a {
   font-weight: 500;
   color: #ff6b35;
@@ -25,17 +53,18 @@ a:hover {
   color: #ffa500;
 }
 
+/* ---------- BUTTONS ---------- */
 button {
   border-radius: 8px;
   border: 2px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 0.95rem;
   font-weight: 500;
-  font-family: inherit;
+  font-family: "Inter", sans-serif;
   background-color: transparent;
   color: #ff6b35;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.25s ease;
 }
 
 button:hover {
@@ -45,8 +74,8 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.4);
 }
 
-/* --- IMPORTANT: removed the debugging rule that outlines everything --- */
-/* DO NOT add `* { outline: 1px solid red; }` anywhere */
+/* ❌ DO NOT ADD DEBUG OUTLINES */

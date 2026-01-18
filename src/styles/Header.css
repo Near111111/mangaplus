@@ -1,53 +1,92 @@
-/* Header Styles */
+/* =========================
+   HEADER CONTAINER
+========================= */
 .header {
   position: relative;
-  background: linear-gradient(
-      to right,
-      rgba(10, 10, 15, 0.7) 0%,
-      rgba(20, 20, 35, 0.65) 50%,
-      rgba(10, 10, 15, 0.7) 100%
-    ),
-    url("/main_header.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding: 25px 0;
-  border-bottom: 3px solid #ff6b35;
+  height: 120px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(255, 107, 53, 0.2);
+  border-bottom: 3px solid #ff6b35;
+
+  /* fallback color habang naglo-load */
+  background-color: #0a0a0f;
 }
 
-.header-background {
+/* =========================
+   MOVING ANIME BACKGROUND
+========================= */
+.header::before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-      circle at 90% 50%,
-      rgba(255, 107, 53, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 10% 50%,
-      rgba(255, 107, 53, 0.05) 0%,
-      transparent 50%
-    );
-  opacity: 0.8;
-  pointer-events: none;
+  inset: 0;
+
+  background-image: url("/header.png");
+  background-repeat: no-repeat;
+
+  /* IMPORTANT: hindi cover para di maputol characters */
+  background-size: 120% auto;
+  background-position: 0% center;
+
+  /* anime slow motion pan */
+  animation: animePan 40s linear infinite;
+
+  /* cinematic look */
+  filter: brightness(0.55) contrast(1.1);
+
+  /* performance */
+  will-change: background-position;
+  transform: translateZ(0);
 }
 
+/* =========================
+   SOFT DARK OVERLAY
+========================= */
+.header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.85)
+  );
+  z-index: 1;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes animePan {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+/* =========================
+   HEADER CONTENT
+========================= */
 .header-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  height: 100%;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
+
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 30px;
 }
 
+/* =========================
+   LOGO SECTION
+========================= */
 .logo-section {
   display: flex;
   align-items: center;
@@ -58,91 +97,61 @@
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .logo:hover {
   transform: scale(1.08);
-  filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.6));
 }
 
+/* =========================
+   LOGO ICON
+========================= */
 .logo-icon {
-  height: 48px;
+  height: 44px;
   width: auto;
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
 }
 
-.logo:hover .logo-icon {
-  filter: drop-shadow(0 0 12px rgba(255, 107, 53, 0.5));
-}
-
+/* =========================
+   LOGO TEXT
+========================= */
 .logo-text {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 900;
-  background: linear-gradient(135deg, #ff6b35 0%, #ffa500 100%);
+  letter-spacing: 3px;
+
+  background: linear-gradient(135deg, #ff6b35, #ffa500);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
-  filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.3));
+
+  text-shadow: 0 0 18px rgba(255, 107, 53, 0.35);
 }
 
-.header-controls {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.mature-toggle {
-  padding: 8px 16px;
-  border: 2px solid #ff6b35;
-  background-color: transparent;
-  color: #ff6b35;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.mature-toggle:hover {
-  background-color: rgba(255, 107, 53, 0.2);
-  box-shadow: 0 0 12px rgba(255, 107, 53, 0.3);
-}
-
-.mature-toggle.active {
-  background-color: #ff6b35;
-  color: #ffffff;
-  box-shadow: 0 0 16px rgba(255, 107, 53, 0.5);
-}
-
-/* Responsive */
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
   .header {
-    padding: 15px 0;
-    border-bottom: 1px solid #ff6b35;
+    height: 90px;
   }
 
   .logo-text {
     font-size: 24px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
   }
 
-  .header-content {
-    padding: 0 20px;
+  .logo-icon {
+    height: 36px;
   }
 }
 
 @media (max-width: 480px) {
-  .logo-text {
-    font-size: 20px;
+  .header {
+    height: 80px;
   }
 
-  .header-content {
-    padding: 0 15px;
+  .logo-text {
+    font-size: 20px;
   }
 }
