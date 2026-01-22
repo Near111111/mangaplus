@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { Skeleton, Box } from "@mui/material";
 import "../styles/MangaDetail.css";
 
 interface MangaDetailData {
@@ -85,7 +86,106 @@ export default function MangaDetail() {
   }, [id]);
 
   if (loading) {
-    return <div className="detail-page">Loading manga details...</div>;
+    return (
+      <div className="detail-page">
+        <div className="detail-banner">
+          <div className="detail-banner-overlay" />
+          <Box className="detail-banner-inner" sx={{ width: "100%" }}>
+            <Box className="detail-left">
+              <Skeleton
+                variant="rectangular"
+                width={170}
+                height={250}
+                sx={{
+                  borderRadius: 1,
+                  background: "rgba(255, 107, 53, 0.1)",
+                  border: "1px solid rgba(255, 107, 53, 0.2)",
+                }}
+              />
+            </Box>
+            <Box className="detail-right" sx={{ flex: 1 }}>
+              <Box
+                className="detail-title-box"
+                sx={{
+                  background: "rgba(255, 107, 53, 0.08)",
+                  border: "1px solid rgba(255, 107, 53, 0.15)",
+                  padding: 2.25,
+                  borderRadius: 1,
+                  mb: 1.25,
+                }}
+              >
+                <Skeleton
+                  variant="text"
+                  width="80%"
+                  height={40}
+                  sx={{
+                    mb: 0,
+                    background: "rgba(255, 107, 53, 0.15)",
+                  }}
+                />
+              </Box>
+              <Box
+                className="manga-info"
+                sx={{
+                  background: "rgba(255, 107, 53, 0.08)",
+                  border: "1px solid rgba(255, 107, 53, 0.15)",
+                  padding: 2,
+                  borderRadius: 1,
+                }}
+              >
+                <Skeleton
+                  variant="text"
+                  width="120px"
+                  height={30}
+                  sx={{ mb: 1.5, background: "rgba(255, 107, 53, 0.15)" }}
+                />
+                <Box
+                  sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}
+                >
+                  {Array.from(new Array(6)).map((_, index) => (
+                    <Skeleton
+                      key={index}
+                      variant="text"
+                      width="70%"
+                      sx={{
+                        background: "rgba(255, 107, 53, 0.12)",
+                        height: 24,
+                      }}
+                    />
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </div>
+        <div className="detail-chapters-area">
+          <Box sx={{ mb: 2 }}>
+            <Skeleton
+              variant="text"
+              width="150px"
+              height={35}
+              sx={{ background: "rgba(255, 107, 53, 0.15)" }}
+            />
+          </Box>
+          <Box className="chapters-list">
+            {Array.from(new Array(12)).map((_, index) => (
+              <Skeleton
+                key={index}
+                variant="rectangular"
+                width="100%"
+                height={45}
+                sx={{
+                  mb: 1,
+                  borderRadius: 1,
+                  background: "rgba(255, 107, 53, 0.1)",
+                  border: "1px solid rgba(255, 107, 53, 0.15)",
+                }}
+              />
+            ))}
+          </Box>
+        </div>
+      </div>
+    );
   }
 
   if (error) {

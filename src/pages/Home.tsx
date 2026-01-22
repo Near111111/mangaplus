@@ -3,6 +3,7 @@ import "../App.css";
 import "../styles/Home.css";
 import ManwhaCard from "../components/ManwhaCard";
 import SearchBar from "../components/SearchBar";
+import { Box, Skeleton } from "@mui/material";
 
 interface Manga {
   id: string;
@@ -125,9 +126,19 @@ export default function Home() {
       <SearchBar onSearch={setSearchQuery} />
 
       {loading ? (
-        <div className="loading">
-          <div className="spinner"></div>
-          <p>{isSearching ? "Searching manga..." : "Loading manga..."}</p>
+        <div className="manwha-grid">
+          {Array.from(new Array(18)).map((_, index) => (
+            <Box key={index} className="skeleton-card">
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={280}
+                sx={{ mb: 1.5, borderRadius: 1 }}
+              />
+              <Skeleton variant="text" width="90%" sx={{ mb: 0.5 }} />
+              <Skeleton variant="text" width="60%" />
+            </Box>
+          ))}
         </div>
       ) : error ? (
         <div className="error-message">

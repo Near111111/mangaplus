@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Skeleton, Box } from "@mui/material";
 import "../styles/MangaReader.css";
 
 interface Page {
@@ -66,7 +67,7 @@ export default function MangaReader() {
         if (pageData.length === 0) {
           console.error(
             "Could not find images array. Full response:",
-            JSON.stringify(data, null, 2)
+            JSON.stringify(data, null, 2),
           );
         }
 
@@ -103,7 +104,36 @@ export default function MangaReader() {
     navigate(`/manga/${id}`);
   };
 
-  if (loading) return <p className="reader-status">Loading chapter...</p>;
+  if (loading)
+    return (
+      <main className="reader-container">
+        <div className="reader-header">
+          <button onClick={handleBackToDetail} className="back-btn">
+            ← Back to Details
+          </button>
+          <Skeleton
+            variant="text"
+            width={200}
+            sx={{ background: "rgba(255, 107, 53, 0.15)" }}
+          />
+        </div>
+        <div className="reader-pages">
+          {Array.from(new Array(5)).map((_, index) => (
+            <Box key={index} sx={{ width: "100%", mb: 0 }}>
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={600}
+                sx={{
+                  background: "rgba(255, 107, 53, 0.1)",
+                  border: "1px solid rgba(255, 107, 53, 0.15)",
+                }}
+              />
+            </Box>
+          ))}
+        </div>
+      </main>
+    );
   if (error) return <p className="reader-status reader-error">{error}</p>;
   if (pages.length === 0)
     return <p className="reader-status">No pages available</p>;
