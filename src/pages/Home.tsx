@@ -59,7 +59,7 @@ export default function Home() {
     } catch (error) {
       console.error(error);
       setError(
-        "The server is currently unavailable due to an unknown issue. Please try again later.",
+        "The website is currently unavailable due to an unknown issue. Please try again later.",
       );
       setMangaData([]);
     } finally {
