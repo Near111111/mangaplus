@@ -28,7 +28,7 @@ const Header: React.FC = () => {
   ];
 
   const handleMenuClick = (label: string) => {
-    if (label === "Home") {
+    if (label === "Home" || label === "Manga List") {
       navigate("/home"); // Redirect to home
     } else {
       window.alert(`${label} — Coming Soon!`);
