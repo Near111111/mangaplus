@@ -179,9 +179,9 @@ const Header: React.FC = () => {
         }}
         PaperProps={{
           sx: {
-            backgroundColor: "rgba(20, 20, 35, 0.95)",
-            backgroundImage:
-              "linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, transparent 100%)",
+            background:
+              "linear-gradient(135deg, rgba(20,20,35,0.98) 0%, rgba(255,107,53,0.1) 50%, rgba(20,20,35,0.5) 100%)",
+            backdropFilter: "blur(10px)",
           },
         }}
       >
